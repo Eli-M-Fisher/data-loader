@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: data-loader
-        image: elif2/data-loader-app
+        image: elif2/data-loader-app:latest
         ports:
         - containerPort: 8000
         env:
