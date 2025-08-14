@@ -21,3 +21,5 @@ The project includes the following:
 https://www.docker.com/blog/blog-docker-desktop-red-hat-openshift/
 
 https://medium.com/@Shamimw/installing-mysql-on-openshift-cluster-using-yamls-3860b3495118
+
+![output](images/Screenshot-2025-08-14-at-17.08.23.png)
