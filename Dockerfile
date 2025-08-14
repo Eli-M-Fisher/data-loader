@@ -2,8 +2,11 @@ FROM python:3.11-slim
 
 WORKDIR /app
 
-COPY . .
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
 
-RUN pip install fastapi uvicorn mysql-connector-python
+COPY ./services /app/services
 
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
+ENV PYTHONPATH=/app
+
+CMD ["uvicorn", "services.data_loader.main:app", "--host", "0.0.0.0", "--port", "8000"]
