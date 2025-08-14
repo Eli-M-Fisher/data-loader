@@ -1,19 +1,19 @@
 import mysql.connector
 
 class DataLoader:
-    def __init__(self):
+    def __init__(self, host, user, password, database):
         self.conn = mysql.connector.connect(
-            host="localhost",
-            user="root",
-            password="1234",
-            database="mydb"
+            host=host,
+            user=user,
+            password=password,
+            database=database
         )
 
 
 
     def get_all_data(self):
-        cursor = self.conn.cursor()
-        cursor.execute("SELECT * FROM data")
+        cursor = self.conn.cursor(dictionary=True)
+        cursor.execute("SELECT * FROM data;")
         result = cursor.fetchall()
         cursor.close()
         return result
