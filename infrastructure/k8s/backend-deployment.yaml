@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: data-loader
-        image: YOUR_DOCKERHUB_USERNAME/data-loader-app
+        image: elif2/data-loader-app
         ports:
         - containerPort: 8000
         env:
