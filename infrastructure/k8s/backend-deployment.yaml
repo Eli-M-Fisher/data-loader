@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: data-loader
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: data-loader
+  template:
+    metadata:
+      labels:
+        app: data-loader
+    spec:
+      containers:
+      - name: data-loader
+        image: YOUR_DOCKERHUB_USERNAME/data-loader-app
+        ports:
+        - containerPort: 8000
+        env:
+        - name: MYSQL_HOST
+          value: "mysql"
+        - name: MYSQL_USER
+          value: "user"
+        - name: MYSQL_PASSWORD
+          value: "password"
+        - name: MYSQL_DATABASE
+          value: "mydb"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: data-loader-service
+spec:
+  ports:
+  - port: 8000
+  selector:
+    app: data-loader
