@@ -21,11 +21,20 @@ spec:
         - name: MYSQL_HOST
           value: "mysql"
         - name: MYSQL_USER
-          value: "user"
+          valueFrom:
+            secretKeyRef:
+              name: mysql-secret
+              key: MYSQL_USER
         - name: MYSQL_PASSWORD
-          value: "password"
+          valueFrom:
+            secretKeyRef:
+              name: mysql-secret
+              key: MYSQL_PASSWORD
         - name: MYSQL_DATABASE
-          value: "mydb"
+          valueFrom:
+            secretKeyRef:
+              name: mysql-secret
+              key: MYSQL_DATABASE
 ---
 apiVersion: v1
 kind: Service
